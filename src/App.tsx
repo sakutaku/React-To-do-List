@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import './App.css';
 import AddTaskFrom from "./AddTaskForm/AddTaskForm";
+import Task from "./Task/Task";
 
 const App = () => {
   const[messages, setMessage] = useState([
@@ -15,15 +16,26 @@ const App = () => {
     // e.preventDefault();
     setMessage(messagesCopy);
     // console.log(e.target.value);
-  }
+  };
 
   const sendMessage = (event: React.MouseEvent<HTMLFormElement>) => {
     event.preventDefault();
     const messagesCopy = [...messages];
     console.log(messagesCopy);
+  };
+
+  const removeMessage = () => {
+    console.log('lets imagine that message was removed');
   }
   return (
-      <AddTaskFrom value={messages[0].value} onChangeMessage={addTask} onSubmitMessage={sendMessage}/>
+      <div className="App">
+        <div>
+          <AddTaskFrom value={messages[0].value} onChangeMessage={addTask} onSubmitMessage={sendMessage}/>
+        </div>
+        <div>
+          <Task message="kakakak" onRemoveMessage={removeMessage}/>
+        </div>
+      </div>
   );
 }
 
