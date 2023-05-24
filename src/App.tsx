@@ -1,25 +1,29 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {useState} from 'react';
 import './App.css';
+import AddTaskFrom from "./AddTaskForm/AddTaskForm";
 
-function App() {
+const App = () => {
+  const[messages, setMessage] = useState([
+    {value: 'Add new task', id: '1234'}
+  ]);
+
+  const addTask = (e: React.ChangeEvent<HTMLInputElement>)=> {
+    const messagesCopy = [...messages];
+    const messageCopy = {...messagesCopy[0]};
+    messageCopy.value = e.target.value;
+    messagesCopy[0] = messageCopy;
+    // e.preventDefault();
+    setMessage(messagesCopy);
+    // console.log(e.target.value);
+  }
+
+  const sendMessage = (event: React.MouseEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const messagesCopy = [...messages];
+    console.log(messagesCopy);
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <AddTaskFrom value={messages[0].value} onChangeMessage={addTask} onSubmitMessage={sendMessage}/>
   );
 }
 
