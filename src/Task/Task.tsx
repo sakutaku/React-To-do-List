@@ -10,7 +10,7 @@ const Task: React.FC<ITask> = props => {
     return(
         <div className="message-box">
             <div>{props.message}</div>
-            <button type="button" onClick={props.onRemoveMessage}>Delete</button>
+            <button type="button" onClick={props.onRemoveMessage} className="btn-remove"></button>
         </div>
     )
 };

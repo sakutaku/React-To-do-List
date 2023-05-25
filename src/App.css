@@ -1,6 +1,14 @@
 body{
-    background: #4d244e;
-    font-family: sans-serif;
+    background-image:  url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/38816/image-from-rawpixel-id-2210775-jpeg.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    font-family: "JetBrains Mono",monospace;
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+    align-items: center;
+    justify-items: center;
 }
 .App {
     margin: 0 auto;
@@ -8,8 +16,74 @@ body{
     height: auto;
  }
 h1{
-    color: #aa8e8d;
     text-align: center;
-    font-size: 32px;
+    font-size: 35px;
     font-weight: 900;
+}
+.form{
+    padding: 3em;
+    border-radius: 20px;
+    border-left: 1px solid rgba(255,255,255,0.3);
+    border-top: 1px solid rgba(255,255,255,0.3);
+    box-shadow: 20px 20px 40px -6px rgba(0,0,0,0.2);
+    position: relative;
+    margin-bottom: 20px;
+}
+.input{
+    width: 100%;
+    font-weight: 500;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+    background-color: #fff;
+    height: 31px;
+    padding: 13px 7px;
+    line-height: normal;
+    border: none;
+    border-top-color: #949494;
+    border-radius: 3px;
+    box-shadow: 0 1px 0 rgb(255 255 255 / 50%), 0 1px 0 rgb(0 0 0 / 7%) inset;
+    outline: 0;
+    color: #111;
+    margin-bottom: 10px;
+    font-size: 18px;
+    font-family: "JetBrains Mono",monospace;
+}
+
+.input:focus{
+    border-color: #fff;
+    box-shadow: 0 0 3px 2px #ffa580;
+}
+
+.btn-form{
+    display: block;
+    margin: 0 auto;
+    line-height: 14px;
+    padding: 0 20px;
+    background: #ffa580;
+    letter-spacing: 2px;
+    transition: .2s all ease-in-out;
+    outline: none;
+    border: 1px solid rgba(0,0,0,1);
+    box-shadow: 3px 3px 1px 1px #ffc8ff, 3px 3px 1px 2px rgba(0,0,0,1);
+}
+.btn-form:hover{
+    background: rgba(0,0,0,1);
+    color: #fff;
+    border: 1px solid rgba(0,0,0,1);
+}
+.message-box{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    background: #f8f4e5;
+    padding: 50px 100px;
+    border: 2px solid rgba(0,0,0,1);
+    box-shadow: 15px 15px 1px #ffa580, 15px 15px 1px 2px rgba(0,0,0,1);
+}
+.btn-remove{
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url("../trash.svg");
+    border: none;
+    cursor: pointer;
+    padding: 10px;
 }
