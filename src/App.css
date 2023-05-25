@@ -87,3 +87,6 @@ h1{
     cursor: pointer;
     padding: 10px;
 }
+.input2:checked + .span{
+    text-decoration: line-through;
+}

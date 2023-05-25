@@ -9,7 +9,15 @@ interface ITask extends React.PropsWithChildren {
 const Task: React.FC<ITask> = props => {
     return(
         <div className="message-box">
-            <div>{props.message}</div>
+            <div>
+
+                <label>
+                    <input type="checkbox" className="input2"/>
+                    <span className="span">{props.message}</span>
+                </label>
+            </div>
+
+            {/*<div>{props.message}</div>*/}
             <button type="button" onClick={props.onRemoveMessage} className="btn-remove"></button>
         </div>
     )

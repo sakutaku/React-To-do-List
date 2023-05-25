@@ -10,40 +10,54 @@ const App = () => {
       {task: 'Exercise', id: '9112'},
   ]);
 
+  const [tasks, setTasks] = useState([
+      {task: '', id: ''}
+  ]);
+
   const addTask = (e: React.ChangeEvent<HTMLInputElement>)=> {
-    const messagesCopy = [...messages];
-    const messageCopy = {...messagesCopy[0]};
-    // messagesCopy.push(newMessage);
-    messageCopy.task = e.target.value;
-    messagesCopy[0] = messageCopy;
-    setMessage(messagesCopy);
+      const tasksCopy = [...tasks];
+      const taskCopy = {...tasksCopy[0]};
+      taskCopy.task = e.target.value;
+      tasksCopy[0] = taskCopy;
+      setTasks(tasksCopy);
   };
 
   const randomNum = () => {
-      const date = new Date();
-      return date;
+      const dateId = new Date();
+      return dateId;
   };
 
-  const sendMessage = (event: React.MouseEvent<HTMLFormElement>) => {
+  const sendMessage = (event: React.FormEvent) => {
     event.preventDefault();
-    const currentTask = messages[0].task;
-    const newtask = {
+    const currentTask = tasks[0].task;
+    const newTask = {
         task: currentTask,
         id: `${randomNum()}`,
     };
-    messages.push(newtask);
-    console.log(messages);
+
+    setMessage([...messages, newTask]);
   };
 
-  const removeMessage = () => {
-    console.log('lets imagine that message was removed');
+  const removeMessage = (id: string) => {
+    const messagesCopy = [...messages];
+
+    const index = messages.findIndex(message => {
+        if(message.id === id) {
+              return true;
+        } else {
+              return false;
+        }
+    });
+
+    messagesCopy.splice(index, 1);
+    setMessage(messagesCopy);
   };
 
   const messageList = messages.map(oneMessage => {
     return(
       <Task
           message={oneMessage.task}
-          onRemoveMessage={removeMessage}
+          onRemoveMessage={() => removeMessage(oneMessage.id)}
           key={oneMessage.id}
       />
     );
@@ -53,7 +67,7 @@ const App = () => {
       <div className="App">
           <h1>To-do list!</h1>
         <div>
-          <AddTaskFrom value={messages[0].task} onChangeMessage={addTask} onSubmitMessage={sendMessage}/>
+          <AddTaskFrom  onChangeMessage={addTask} onSubmitMessage={sendMessage}/>
         </div>
         <div>
           {messageList}
